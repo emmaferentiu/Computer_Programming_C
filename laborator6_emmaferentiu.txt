@@ -1,0 +1,268 @@
+/* Emma-Luciana Ferentiu
+Să se scrie un program care afişează valoarea polinomului de gradul 3 pentru o anumită valoare a
+variabilei reale x.*/
+//  definirea directiva preprocesor
+// folosirea fisierelor antent specifice
+// bibliotecile  standard ce au fost folosite in program
+//citim valori pentru coeficienti, apoi citim x-ul si calculcam valoarea polinomului
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+
+int main()
+{
+	float a, b, c, d;//declarare locala a variabilor reale corespunzatoare coeficientilor si x-ului
+	printf_s("Scrie coeficientii:");
+	scanf_s("%f %f %f %f", &a,&b,&c,&d); //citirea valorilor de tip float
+    printf_s("Scrie valoarea:");
+	float x; //citire x
+	scanf_s("%f", &x);
+	float polinom = a * x *x*x + b * x*x+ c * x + d; //calculare polinom
+	printf_s("%f", polinom); //afisare polinom
+
+     
+
+}
+..................................
+/* Ferentiu Emma-Luciana
+Să se scrie un program care citeşte lungimile laturilor unui triunghi (folosind variabile întregi) şi
+afişează aria triunghiului ca valoare reală*/
+//  definirea directiva preprocesor
+// folosirea fisierelor antent specifice
+// bibliotecile  standard ce au fost folosite in program
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <math.h>
+float arief(int a, int b, int c); //declaratie functie calcul arie
+int main()
+{
+	int a, b, c; //laturi declarate local, numere intregi
+	float arie; //aria declarata de tip real
+	printf_s("Scrie laturile:");
+	scanf_s("%d %d %d", &a,&b,&c); //citire laturi
+	if (a + b > c&& b + c > a&& a + c > b) //verificare daca exista posibilitatea ca laturile a,b,c sa fie laturile unui triunghi
+	{
+		arie = arief(a, b, c); //in caz afirmativ, se calculeaza aria si se afiseaza
+		printf("%f", arie); 
+
+	}
+	else
+		printf("nu e posibil"); //in caz negativ, se afiseaza un mesaj specific
+ 
+     
+
+}
+float arief(int a, int b, int c) //antent functie avand ca parametrii laturile de tip int
+{
+	float sp = (a + b + c) / 2.f; //calcul semiperimetru
+	float arie = sqrt(sp*(sp - a)*(sp - b)*(sp - c)); //aplicarea formulei lui heron
+	return arie; //returnare valoare arie
+}
+.................................................
+
+// Ferențiu Emma Luciana
+//  definirea directiva preprocesor
+// folosirea fisierelor antent specifice
+// bibliotecile  standard ce au fost folosite in program
+//vom citi o valoare char, vom deplasa la dreapta biti folosind >>
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <iostream>
+
+using namespace std;
+
+int main() {
+	char c; //declaram caracter de tip char
+	printf("Dati un caracter: ");
+	scanf("%c", &c); //citim caracter de tip char
+	printf("valoarea bitilor: %d ", c>>1); //transformam valoarea char in int(cod ascii) si deplasam biti prin operatorul specific
+       
+	return 0;
+}
+....................................................
+//Ferentiu Emma Luciana
+/*
+ Să se scrie un program care monitorizează un canal de 16/32/64 biţi. Pentru aceasta citiţi de la
+tastatură o valoare întregă fără semn a care va fi afişată în zecimal, binar, octal şi hexazecimal.
+Folosiţi o funcţie pentru conversia numerelor din baza 10 în baza 2. Implementaţi o altă funcţie
+numită getsets() care primeşte trei valori ca parametri:
+- x: valoarea citită de la tastatură
+- p: poziţia unui bit din cei 16/32 sau 64 de biţi (numărând de la dreapta)
+- n: numărul de biţi care vor fi extraşi din tabel.
+Funcţia returnează, aranjaţi spre dreapta, acei n biţi ai valorii x, pornind de la poziţia p, unde
+p<8*sizeof(x) şi p>n. Afişaţi rezultatul în binar, octal şi hexazecimal. */
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <iostream>
+
+using namespace std;
+int binar(int);
+//int getsets(int, int, int);
+int main()
+{
+	int n, p, n2;
+	printf("Dati un numar: ");
+	scanf("%d", &n);
+	printf("dati o pozitie: ");
+	scanf("%d", &p);
+	printf("dati nr de biti care vor fi extrasi din tabel", &n2);
+	printf("\nValoarea citita, in zecimal este %d, in binar %d, in octal %#o si in hexazecimal %#x", n, binar(n), n, n);
+	return 0;
+}
+int binar(int n)
+{
+	int r, i = 1, b = 0;
+	do {
+		r = n % 2;
+		b = b + (r * i);
+		i = i * 10;
+		n = n / 2;
+	} while (n > 0);
+	return b;
+}
+//int getsets(int x, int p, int n)
+..............................................
+//Ferentiu Emma-Luciana
+//afiseaza numarul de zerouri din reprezentarea binara
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <iostream>
+
+using namespace std;
+
+int main() {
+	int nr,c=0;
+	printf("Dati un numar: ");
+	scanf("%d", &nr); //citim un numar intreg
+	do {
+		if (nr % 2 == 0) {  c++; }  //de fiecare data cand numarul se imparte exact la 2 apare inca un 0 in reprezentarea binara
+		nr = nr / 2; //impartim numarul succesiv
+		
+	} while (nr > 0); //ne oprim cand acesta ajunge la 0
+	printf("\nNumarul de 0 din reprezentarea binara a numarului ales este %d \n", c);
+	return 0;
+}
+......................................................................................................
+//Ferentiu Emma-Luciana
+//cititi o valoare intreaga si afisati valoarea zecimala a fiecarui octet
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <iostream>
+
+using namespace std;
+
+int main() {
+	int a;
+	printf("Dati o valoare intreaga: ");
+	scanf("%d", &a);
+	if (a > 256) 
+	{
+		if (a > 655315)//2 octeti alaturati pot retine valori pana la 655315
+		{
+			if (a > 6708863)
+			{
+				cout << "Numarul este reprezentat pe 32 bit, 4 octeti, primul octet avand valoare 256, al doilea 256, al treilea 256 si ultimul " << 4294967295 - a;
+			}
+			else cout << "Numarul este reprezentat pe 32 bit, 3 octeti, primul octet avand valoare 256, al doilea 256 si ultimul " << 6708863 - a;
+		}
+		else cout << "Numarul este reprezentat pe 16 bit, 2 octeti, primul octet avand valoare 256 iar al doilea " << 655315 - a;
+	}
+	else cout << "Numarul e reprezentat pe 16 bit, 1 octet, avan valoare " << 256 - a;
+	return 0;
+}
+...................................
+//Ferentiu Emma-Luciana
+//  definirea directiva preprocesor
+// folosirea fisierelor antent specifice
+// bibliotecile  standard ce au fost folosite in program
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <iostream>
+
+using namespace std;
+
+int main() {
+	float a,b; /declarare valori reale
+	printf("Dati doua valori reale: ");
+	scanf("%f%f", &a, &b); //citire valori reale
+	float ad = a + b;
+	float sc = a - b;
+	float in = a * b;
+	float im = a / b;
+	printf("Rezultat adunare: %f \nRezultat scadere: %f \nRezultat inmultire: %f \nRezultat impartire: %f", ad, sc, in, im); //afisare raspunsuri reale
+	ad = int(ad); //rotunjire
+	sc = int(sc);
+	in = int(in);
+	im = int(im);
+	printf("\nRezultate rotunjite: adunare %0.f, scadere %0.f, inmultire %0.f, impartire %0.f\n", ad, sc, in, im); //afisare raspunsuri intregi
+	if (a < b) 
+		{cout << a;} //se afiseaza minimul
+	else
+		{cout << b;}
+	return 0;
+}
+............................
+//Ferentiu Emma-Luciana
+//se transforma caractere citite in litere mari prin operatie aritmetica, respectiv prin operatie logica si o masca adecvata
+//  definirea directiva preprocesor
+// folosirea fisierelor antent specifice
+// bibliotecile  standard ce au fost folosite in program
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <iostream>
+
+using namespace std;
+
+int main() {
+	char a, b, c, d; //declarare caractere
+	printf("Dati 4 caractere, litere mici: ");
+	scanf("%c %c %c %c", &a, &b, &c, &d);
+	printf("Literele sunt: %c, %c, %c, %c", a - 32, b - 32, c - 32, d - 32); //scadem 32 in vederea codului ascii
+	printf("\nLieterele sunt: %c, %c, %c, %c", a & 0xDF, b & 0xDF, c & 0xDF, d & 0xDF); //luam drept masca 0xDF adica 11011111 in binar si folosim si-logic
+	return 0;
+}
+...............................
+// Ferențiu Emma Luciana
+//  definirea directiva preprocesor
+// folosirea fisierelor antent specifice
+// bibliotecile  standard ce au fost folosite in program
+//citire 2 laturi si calcul arie cerc daca sunt egale, altfel aria dreptunghi
+
+
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <iostream>
+
+using namespace std;
+double cerc(int); //antet functie calcul arie cerc
+double dreptunghi(int,int); //antet calcul arie dreptunghi
+int main() {
+	int a,b;
+	double ad;
+	bool c;
+	printf("Dati doua valori ale numerelor: ");
+	scanf("%d%d", &a, &b); //citire valori
+	if (a == b) //comparare valori
+	{
+		ad = cerc(a); //daca sunt egale calcul arie cerc
+		c = 0;
+	}
+	else
+	{
+		ad = dreptunghi(a, b); //altfel calcul arie dreptunghi
+		c = 1;
+	}
+
+if (c == 0)
+printf("Aria cercului este %lf", ad); //afisare valori double
+else
+printf("Aria dreptunghiului este %lf", ad);
+
+}
+double cerc(int a)
+{
+	return  double(3.14 * a * a); //calcul specific
+}
+double dreptunghi(int a, int b)
+{
+	return a * b;
+}

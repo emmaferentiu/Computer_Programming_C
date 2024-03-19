@@ -1,0 +1,204 @@
+1.
+// Ferențiu Emma Luciana
+
+// folosirea fisierelor antent specifice
+// bibliotecile  standard ce au fost folosite in program
+#define _CRT_SECURE_NO_WARNINGS 
+#include <stdio.h>
+
+int main()
+{
+	float a, b, c; //folosim tipul float deoarece numerele sunt neîntregi
+//declarare locala a variabilelor
+	printf("Introduceți primul număr ");
+	scanf("%f", &a); //citire prin apel functie specifica date float din biblioteca
+	printf("Introduceți cel de-al doilea număr ");
+	scanf("%f", &b);
+	printf("Introduceți cel de-al treilea număr ");
+	scanf("%f", &c);
+	printf("\nMedia acest numere  este: %f ", ((a + b + c) / 3)); //afisare rezultat prin calcul simplu
+	return 0;
+}
+
+2.
+//Ferentiu Emma-Luciana
+
+
+//  definirea directiva preprocesor
+// folosirea fisierelor antent specifice
+// bibliotecile  standard ce au fost folosite in program
+#define _CRT_SECURE_NO_WARNINGS 
+#define _CRT_SECURE_NO_WARNINGS 
+#include <stdio.h>
+#include <math.h>
+int main()
+{
+	int a,b; //folosim tipul int deoarece numerele sunt întregi //declarare locala a variabilelor
+	printf("Introduceți primul număr ");
+	scanf("%d", &a); //citire prin apel functie specifica din biblioteca
+	printf("Introduceți cel de-al doilea număr ");
+	scanf("%d", &b);
+
+	printf("\nMedia geometrică a acest numere  este: %f ", sqrt(a*b));//afisare rezultat printr-un calcul simplu
+	return 0;
+}
+3.
+// Ferentiu Emma Luciana
+//  definirea directiva preprocesor
+// folosirea fisierelor antent specifice
+// bibliotecile  standard ce au fost folosite in program
+#define _CRT_SECURE_NO_WARNINGS 
+#include <stdio.h>
+#include <iostream>
+using namespace std;
+
+int main()
+{   int n; //folosim int deoarece variabila este intreaga
+	#define n 14543; //definire variabila intreaga cu o anumita valoare 
+
+	cout <<"Valoarea pe care ati ales sa o definiti are valoarea constanta " << n; //afisare prin intermediului operatorului >> 
+//si  cout
+	return 0;
+}
+4.
+
+// Ferențiu Emma Luciana
+//  definirea directiva preprocesor
+// folosirea fisierelor antent specifice
+// bibliotecile  standard ce au fost folosite in program
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <iostream>
+#include <cstring>
+
+using namespace std;
+
+int main() {
+
+	char s[100]; //initializam sirul, folosind char specific
+	#define s "laborator5" //definim sirul
+	cout << "sirul de caractere definit este urmatroul"<<s; //afisam sirul cu ajutorul cout
+	char a[100], b[100]; //initializam urmatoarele siruri, folosind char specific
+	#define a "\noctombrie"  //definim sirul folosind secvente escape
+	#define b "\n2021" //definim inca un sir folosind secvente escape
+	if(strstr(a,"\n")==NULL) //folosind functia strstr din biblioteca cstring
+	//verificam daca in sirul a exista secvente albe
+	cout<<"\nnu exista secventa alba";
+	//afisam rezultatele in consecinta 
+	else
+	cout<<"\nexista secventa alba";
+	return 0;
+}
+5.
+
+// Ferențiu Emma Luciana
+//  definirea directiva preprocesor
+// folosirea fisierelor antent specifice
+// bibliotecile  standard ce au fost folosite in program
+#define _CRT_SECURE_NO_WARNINGS 
+#include <stdio.h>
+int cit_nr(); //declarare functie citire numere
+float cit_pondere(); //declarare functie citire ponderi
+
+int main()
+{
+	int a, b, c;  //declarare locala a numerelor intregi
+	float p1, p2, p3; //declarare locala a ponderilor 
+	a = cit_nr(); //citire prin accesarea functiei
+	p1 = cit_pondere();
+	b = cit_nr();
+	p2= cit_pondere();
+	c = cit_nr();
+	p3 = cit_pondere();
+	printf("Suma ponderata este %0.2f", ((a * p1) + (b * p2) + (c * p3))/(p1+p2+p3)); //afisare prin formula de calcul specifica
+	return 0;
+}
+int cit_nr(void)//antetul functiei ce returneaza o valoare de tip int 
+{
+	int nr;
+	printf("Introduceti un numar intreg: ");
+	scanf("%d", &nr);
+	return nr;
+}
+float cit_pondere(void)//antetul functiei ce returneaza o valoare de tip float 
+{
+	float nr;
+	printf("Introduceti ponderea: ");
+	scanf("%f", &nr);
+	return nr;
+}
+6.
+//Ferentiu Emma Luciana
+//  definirea directiva preprocesor
+// folosirea fisierelor antent specifice
+// bibliotecile  standard ce au fost folosite in program
+
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <iostream>
+
+; using namespace std;
+
+int main() {
+
+	char sir[100]; //declarare sir 
+	int intreg; //declarare numar de tip intreg
+	float real; //declarare numar real
+#define sir "laborator5programare" ; //definire sir
+#define intreg 102; //definire intreg
+#define real 4.32; //definire numar real
+	cout << "Sirul definit este " << sir;
+	cout << ", numarul intreg definit este : "<< intreg;
+	cout << " si numarul real definit: " << real;
+	//afisare cu ajutorul cout si << a celor cerute in cerinta
+	return 0;
+}
+7.
+//Ferentiu Emma Luciana
+//  definirea directiva preprocesor
+// folosirea fisierelor antent specifice
+// bibliotecile  standard ce au fost folosite in program
+#define _CRT_SECURE_NO_WARNINGS 
+#include <stdio.h>
+int cit_nrintr(void); //declarare functie citire valori intregi
+float cit_nrreale(void); //declarare functie citire valori reale
+
+void calculreale(); // declarare functie menita sa faca calculul
+void calculintregi();
+
+
+int main()
+{
+	calculreale();            //accesare functie calcul
+	calculintregi();
+}
+int cit_nrintr(void)
+{
+	int nr;
+	printf("Introduceti un numar intreg: ");
+	scanf("%d", &nr); //citire valoare intreaga
+	return nr;
+}
+float cit_nrreale(void)
+{
+	float nr;
+	printf("Introduceti un numar real: ");
+	scanf("%f", &nr);  //citire valoare reala
+	return nr;
+}
+void calculreale()
+{
+	float a, b, c;
+	a = cit_nrreale();
+	b = cit_nrreale();
+	c = cit_nrreale();
+	printf("Rezultatul este: %f", (1 / a) + (1 / b) + (1 / c)); //afisare valoare reala
+}
+void calculintregi()
+{
+	int a, b, c;
+	a = cit_nrintr();
+	b = cit_nrintr();
+	c = cit_nrintr();
+	printf("Rezultatul este: %d", (1 / a) + (1 / b) + (1 / c)); //afisare valoare intreaga
+}

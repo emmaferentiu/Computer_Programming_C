@@ -1,0 +1,250 @@
+/*Ferentiu Emma-Luciana
+1. Să se scrie un program care citeşte de la tastatură un şir de caractere, apoi elimină din şir caracterele
+care se repetă şi afişează în final şirul obţinut, folosind pointeri*/
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <cstring>
+int main() {
+
+	char s[50];
+	printf("Dati un sir de caractere: ");
+	scanf("%s", &s);
+	char* ps = &s[0];
+	for (int i = 0; i < strlen(s); i++) {
+		if (*ps == *ps++) {
+			return 2;
+		}
+	}
+}
+
+
+---------------------------------------------------------------------------------------------------------
+
+
+/* Ferentiu Emma-Luciana
+2. Să se scrie un program care citeşte de la tastatură două şiruri de caractere şi afişează numărul de
+caractere prin care ele diferă (adică numărul de caractere care există în primul şi nu există în al
+doilea + numărul de caractere care există în al doilea şi nu există în primul). Folosiţi pointeri pentru
+accesul la elementele tablourilor.*/
+
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <cstring>
+#define DIM 100
+int compare(char* a, char* b);
+int main() {
+	char a[DIM], b[DIM];
+	printf("Introduceti primul sir de caractere: ");
+	scanf("%s", a);
+	printf("Introduceti al doilea sir de caractere: ");
+	scanf("%s", b);
+	int d1 = strlen(a);
+	int d2 = strlen(b);
+	int nr = (d1-compare(a, b)) + (d2-compare(b, a));
+	printf("\nNumarul de caractere este: %d", nr);
+}
+int compare(char* a, char* b) {
+	int d1 = strlen(a);
+	int d2 = strlen(b);
+	int nr = 0;
+	for (int i = 0; i < d1; i++) {
+		for (int j = 0; j < d2; j++) {
+			if (*(a + i) == *(b + j)) {
+				nr++;
+			}
+		}
+	}
+	return nr;
+}
+
+
+----------------------------------------------------------------------------------------------------
+
+
+/* Ferentiu Emma-Luciana
+3. Să se scrie un program C/C++ care citeşte elementele a doua tablouri unidimensionale de numere
+întregi şi afişează produsul scalar al acestora. Se va folosi o functie care preia elementele de la
+tastatură şi o altă funcţie, care calculează produsul scalar. Ambele vor utiliza pointeri. Citirea
+numărului de elemente ale tabloului şi afişarea rezultatului se va face în funcţia main().*/
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <cstring>
+int x[50], y[50];
+void citire(int* x, int* y, int m, int n);
+void prod(int* x, int* y, int m, int n);
+int main() {
+	int m, n;
+	printf("Dati dimensiunile celor doua tablouri: ");
+	scanf("%d%d", &m, &n);
+	citire(x, y, m, n);
+	prod(x, y, m, n);
+}
+void citire(int x[50], int y[50], int m, int n) {
+	printf("Introduceti elementele tablourilor:");
+	for (int i = 0; i < n; i++) {
+		printf("x[%d]=", i);
+		scanf("%d", x + i);
+	}
+	for (int j = 0; j < m; j++) {
+		printf("y[%d]=", j);
+		scanf("%d", y + j);
+	}
+}
+void prod(int x[50], int y[50],int m,int n) {
+	int s = 0;
+	if (m < n) {
+		for (int i = 0; i < m; i++) {
+			s = s + *(x + i) * *(y + i);
+		}
+	}
+	else {
+		for (int i = 0; i < n; i++) {
+			s = s + *(x + i) * *(y + i);
+		}
+	}
+	printf("Produsul scalar este %d", s);
+}
+
+
+-------------------------------------------------------------------------------------------------------
+
+
+/* Ferentiu Emma-Luciana
+4. Să se scrie o aplicaţie C/C++ în care se generează aleator 20 de numere întregi cu valori mai mici
+decât 50 (Folositi srand(), rand() si operatorul %). Să se scrie o funcţie care elimină din tabloul
+unidimensional creat numerele impare. Funcţia va utiliza pointeri. Afişati în main() tabloul iniţial şi
+cel obţinut după eliminarea elementelor impare.*/
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <cstring>
+#include <ctime>
+#include <cstdlib>
+int x[20] = { 0 };
+void eliminare(int* x);
+int main() {
+	
+	int k = -1, i = 0;
+	srand((unsigned)time(0));
+	int n;
+	for (int i = 0; i < 20; i++) {
+		n = (rand() % 50) + 1;
+		x[++k] = n;
+	}
+
+	printf("Tabloul initial este: ");
+
+	for (i = 0; i < 20; i++)
+	{
+		printf("%d ", *(x + i));
+	}
+
+	printf("\nTabloul dupa elimiarea cifrelor impare este: ");
+	eliminare(x);
+}
+void eliminare(int* x) {
+	int y[20], r = -1;
+	for (int i = 0; i < 20; i++) {
+		if (*(x + i) % 2 == 0) {
+			y[++r] = *(x + i);
+	}}
+	for (int i = 0; i < r; i++) {
+		*(x + i) = y[i];
+	}
+	for (int i = 0; i < r; i++)
+	{
+		printf("%d ", *(x + i));
+	}
+}
+
+
+---------------------------------------------------------------------------------------------------------
+
+
+/* Ferentiu Emma-Luciana
+5. Să se scrie un program C/C++ în care se citesc de la tastatură numere reale, ce vor fi stocate într-un
+tablou unidimensional. Să se scrie o funcţie care copiază într-un alt tablou toate valorile din primul
+tablou, care sunt mai mari decât valoarea medie a numerelor preluate. Se vor folosi pointeri şi se vor
+afişa în main() valorile din cele două tablouri.*/
+
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <cstring>
+#define DIM 100
+
+void citire(float* a, int n);
+void copiere(float* a, float* b, int n, int* m, float val_med);
+
+int main() {
+	float a[DIM],b[DIM],s=0;
+	int n,m;
+	printf("Dati dimensiunea sirului: ");
+	scanf("%d", &n);
+	printf("Dati sirul: ");
+	citire(a, n);
+	printf("\nTabloul initial: ");
+	for (int i = 0; i < n; i++) {
+		printf("%0.2f ", a[i]);
+		s += a[i];
+	}
+	float val_med = s / n;
+	copiere(a, b, n, &m, val_med);
+	printf("\nTabloul final: ");
+	for (int i = 0; i < m; i++) {
+		printf("%0.2f ", b[i]);
+	}
+
+}
+
+void citire(float* a, int n) {
+	for (int i = 0; i < n; i++) {
+		printf("a[%d]= ", i);
+		scanf("%f", a + i);
+	}
+}
+
+void copiere(float* a, float* b, int n, int *m, float val_med) {
+	int j = 0;
+	for (int i = 0; i < n; i++) {
+		if (*(a + i) > val_med) {
+			*(b + j) = *(a + i);
+			j++;
+		}
+	}
+	*m = j;
+}
+
+
+-------------------------------------------------------------------------------------------------------------
+
+
+/* Ferentiu Emma-Luciana
+6. Să se scrie o aplicaţie C/C++ care citeşte de la tastatură un şir de caractere. Să se scrie o funcţie care
+afişează caracterele ce compun şirul şi numărul de apariţii ale fiecăruia, folosind pointeri.*/
+
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <cstring>
+#define DIM 100
+
+void caractere(char* c);
+
+int main() {
+	char c[DIM];
+	printf("Dati sirul de carcatere: ");
+	scanf("%s", c);
+	caractere(c);
+}
+
+void caractere(char* c) {
+	int nr = 0;
+	for (int i = 0; i < strlen(c); i++) {
+		for (int j = 0; j < strlen(c); j++) {
+			if (*(c + i) == *(c + j)) {
+				nr += 1;
+			}
+		}
+		printf("\nCarcaterul %c apare de %d ori", *(c + i), nr);
+		nr = 0;
+	}
+	
+}

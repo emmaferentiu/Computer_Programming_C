@@ -1,0 +1,455 @@
+/* Ferentiu Emma-Luciana
+1. Se citesc trei numere de la tastatură (a, b şi c). Să se determine aria dreptunghiului ale cărui laturi
+sunt a şi b şi verificaţi dacă diagonala dreptunghiului este egală cu c.*/
+//  definirea directiva preprocesor
+// folosirea fisierelor antent specifice
+// bibliotecile  standard ce au fost folosite in program
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+int diag(int, int, int); //declarare functie
+int main()
+{
+	int a, b, c;
+	printf("Introduceti 3 numere: ");
+	scanf("%d%d%d", &a, &b, &c); //citire numere de tip int
+	printf("Aria dreptunghilui determinat de laturile %d si %d este %d\n", a, b, a * b); //afisare aria dreptunghiului
+	if( diag(a,b,c)==1) // interpretare rezultat functie
+ {
+		printf("%d este diagonala dreptunghiului", c);
+	}
+	else { printf("%d nu este diagonala dreptunghiului", c); }
+	return 0;
+}
+int diag(int a, int b, int c)
+{ if (c * c == (a * a) + (b * b)) //verificare daca c este diagonala
+   return 1;
+  return 0;
+}
+
+/*Ferentiu Emma-Luciana
+2. Să se scrie un program care verifică dacă un număr citit de la tastatură este pătrat perfect*/
+//  definirea directiva preprocesor
+// folosirea fisierelor antent specifice
+// bibliotecile  standard ce au fost folosite in program
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <cmath>
+int pp(int n); //declarare functie
+int main()
+{
+	int n;
+	printf("Dati un numar: ");
+	scanf("%d", &n);
+	if (pp(n)==1) //verificare daca este patrat perfect
+		printf("%d este patrat perfect", n);
+	else printf("%d nu este patrat perfect", n);
+
+	return 0;
+}
+int pp(int n) // antet functie patrat perfect
+{ if (sqrt(n) == int(sqrt(n))) 
+  return 1;
+return 0;
+}
+
+/* Ferentiu Emma-Luciana
+3. Să se scrie un program care calculeaza a la n, unde n este citit de la consolă (a se defineşte în program). */
+//  definirea directiva preprocesor
+// folosirea fisierelor antent specifice
+// bibliotecile  standard ce au fost folosite in program
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <cmath>
+
+int calcul(int a, int n); //declarare functie
+int main()
+{
+
+constexpr auto a = 8; //expresie constanta definita in program
+	int n, b = a;
+	printf("Dati un numar: ");
+	scanf("%d", &n);
+	printf("%d la puterea %d este %d", a, n, calcul(a,n));
+	return 0;
+}
+int calcul(int a, int n) //antet functie
+{
+	int b=1;
+	for (int i = 1; i <= n; i++)
+	{
+		b = b * a; //calcul putere prin inmultiri repetate
+	}
+	return b;
+}
+/* Ferentiu Emma-Luciana
+4. Să se scrie un program care citeşte de la tastatură o valoare întreagă şi calculează n! (n-factorial). */
+//  definirea directiva preprocesor
+// folosirea fisierelor antent specifice
+// bibliotecile  standard ce au fost folosite in program
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+int fact(int n); //declarare functie
+int main()
+{
+	int n;
+	printf("Dati un numar: ");
+	scanf("%d", &n);
+
+	printf("%d! este %d", n, fact(n));
+	return 0;
+}
+int fact(int n)
+
+{
+	int r = 1;
+	for (int i = 1; i <= n; i++) //calcul prin inmultirea valorilor de la 1 la n
+	{
+		r = r * i;
+	}
+	return r;
+}
+
+/* Ferentiu Emma-Luciana
+5. Să se scrie un program care :
+- determină cel mai mare număr prim mai mic decât numărul dat
+- determină toate numerele prime mai mici decât numărul dat.*/
+//  definirea directiva preprocesor
+// folosirea fisierelor antent specifice
+// bibliotecile  standard ce au fost folosite in program
+
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+
+int prim(int n); //declarare functie
+int main()
+{
+	int n, r = 1;
+	printf("Dati un numar: ");
+	scanf("%d", &n);
+	for (int i = n-1; i>0 ; i--) //parcurgere numere de la n la 0 
+{
+		if (prim(i) == 1) //primul nr prim intalnit este afisat
+{
+			printf("Cel mai mare numar prim mai mic decat %d este %d", n, i);
+			i = 0;
+		}
+	}
+	printf("\nToate numere prime mai mici decat %d sunt: ", n);
+	for (int i = 1; i < n; i++) //parcurgere de la 0 la n si afisare pentru fiecare valoare prima
+ {
+		if (prim(i) == 1)
+			printf("%d ", i);
+	}
+	
+}
+
+int prim(int n) {
+	int k=0;
+	for (int i = 2; i < n / 2; i++) {
+		if (n % i != 0) {
+			k = 0;
+		}
+		else {
+			k = 1;
+			i = n;
+		}
+	}
+	if (k == 0)
+		return 1;
+	else return 0;
+}
+/* Ferentiu Emma-Luciana
+6. Să se scrie un program care determină cel mai mare divizor comun a doi întregi.*/
+//  definirea directiva preprocesor
+// folosirea fisierelor antent specifice
+// bibliotecile  standard ce au fost folosite in program
+
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+int cmmdc(int a,int b); //declarare functie
+int main()
+{
+	int a, b;
+	printf("Dati doua numere: ");
+	scanf("%d%d", &a, &b);
+
+	printf("Cel mai mare divizor comun al numerelor %d si %d este %d", a, b, cmmdc(a,b)); //afisare cmmdc
+	return 0;
+}
+int cmmdc(int a, int b)  //antet functie
+{while (a != b) //calcul prin scaderi repetate
+	{
+		if (a > b)
+			a = a - b;
+		else
+			b = b - a;
+	}
+return a;
+}
+/* Ferentiu Emma-Luciana
+7. Să se scrie un program care determină toţi divizorii unui număr*/
+//  definirea directiva preprocesor
+// folosirea fisierelor antent specifice
+// bibliotecile  standard ce au fost folosite in program
+
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+
+int main()
+{
+	int n;
+	printf("Dati un numar: ");
+	scanf("%d", &n);
+	printf("Toti divizorii lui %d sunt:", n);
+	for (int i = 1; i <= n; i++) {
+		if (n % i == 0) //daca  n impartit la un numar are restul 0, acel numar e divizor
+			printf("%d ", i);
+	}
+	return 0;
+}
+/* Ferentiu Emma-Luciana
+8. Calculaţi produsul a două numere întregi folosind numărul corespunzător de adunări.*/
+//  definirea directiva preprocesor
+// folosirea fisierelor antent specifice
+// bibliotecile  standard ce au fost folosite in program
+
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+int produs(int a, int b); //declarare functie
+int main()
+{
+	int a, b;
+	printf("Dati doua numere: ");
+	scanf("%d%d", &a, &b);
+	
+	printf("Produsul este: %d", produs(a,b));
+}
+int produs(int a, int b) //antet functie
+{ int s = 0;
+	for (int  i = 1; i <=b; i++)
+	{
+		s = s + a; //suma primeste a de b ori cu ajutorul for-ului
+	}
+return s;
+}
+/* Ferentiu Emma-Luciana
+9. Să se scrie un program care determină câtul împărţirii a doi întregi folosind scăderi succesive.*/
+//  definirea directiva preprocesor
+// folosirea fisierelor antent specifice
+// bibliotecile  standard ce au fost folosite in program
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+int catul(int a, int b); //declarare functie
+int main()
+{
+	int a, b;
+	printf("Dati doua numere: ");
+	scanf("%d%d", &a, &b);
+
+	printf("Catul este %d", catul(a,b));
+	return 0;
+}
+int catul(int a, int b) //antet functie
+{
+int c = 0;
+	while (a >= b) {
+		a = a - b; //scaderi succesive pana a devine mai mic decat b
+		c++;
+	}
+return c;
+}
+/* Ferentiu Emma-Luciana
+10.  Să se scrie un program care determină numărul de cifre care compun un număr întreg citit de la
+tastatură.*/
+//  definirea directiva preprocesor
+// folosirea fisierelor antent specifice
+// bibliotecile  standard ce au fost folosite in program
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+int nrcifre(int a); //declarare functie
+int main()
+{
+	int n;
+	printf("Dati un numar: ");
+	scanf("%d", &n);
+	printf("Numarul %d are %d cifre", a, nrcifre(a));
+	return 0;
+}
+int nrcifre(int a) //antet functie
+{
+int c = 0, a=n;
+	do {
+		c++;
+		n = n / 10; //trunchierea nr cu cate o cifra si contorizarea acesteia
+	} while (n > 0);
+return c;
+}
+
+/* Ferentiu Emma-Luciana
+11. Să se scrie un program care citeşte de la tastatură n numere întregi. Afişaţi toate numerele impare din
+şir.*/
+//  definirea directiva preprocesor
+// folosirea fisierelor antent specifice
+// bibliotecile  standard ce au fost folosite in program
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+
+int main()
+{
+	int n, x[100]; //declarare n si un vector de numere intregi
+	printf("Dati un numar: ");
+	scanf("%d", &n);
+	for (int i = 0; i < n; i++) //citire valori din vector 
+		scanf("%d", &x[i]);
+
+printf("Sirul are urmatoarele numere impare: ");
+for (int i = 0; i < n; i++) 
+{
+	if (x[i] % 2 == 1) //daca numerele au restul 1 la impartirea cu 2 sunt impare si le afisam
+	{
+		printf("%d ", x[i]);
+	}
+}
+return 0;
+
+}
+/* Ferentiu Emma-Luciana
+12.Să se citească un număr întreg n de la tastatură.
+	Se citesc apoi numere reale, până când suma lor depăşeşte valoarea lui n.
+	Să se afişeze suma numerelor citite, cu o precizie de 2 zecimale şi numărul lor (câte s-au introdus)*/
+//  definirea directiva preprocesor
+// folosirea fisierelor antent specifice
+// bibliotecile  standard ce au fost folosite in program
+
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+int main()
+{
+	int n, i = 0;
+	float x, s=0;
+	printf("Dati un numar: ");
+	scanf("%d", &n);
+	printf("Dati niste numere reale: ");
+	do {
+		scanf("%f", &x);
+		i++;
+		s = (s + x);
+	} while (s<=n); //citire a valorilor pana se depaseste nr n
+	printf("Suma numerelor citite este %0.2f iar numarul lor este %d", s,i); //afisare acestora respectand specificatiile cerintei
+	return 0;
+}
+/* Ferentiu Emma-Luciana
+13. Să se scrie un program care determină cmmmc a două numere citite de la tastatură.*/
+//  definirea directiva preprocesor
+// folosirea fisierelor antent specifice
+// bibliotecile  standard ce au fost folosite in program
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+int cmmdc(int a, int b); //declarare functie
+
+int main()
+{
+	int a, b;
+	printf("Dati doua numere: ");
+	scanf("%d%d", &a, &b);
+	printf("CMMMC al numerelor %d si %d este %d", a, b, (a * b / cmmdc(a, b)));
+	return 0;
+}
+
+int cmmdc(int a, int b) //antet functie
+ {
+	while (a != b) //calcul prin scaderi repetate
+	{
+		if (a > b)
+			a = a - b;
+		else
+			b = b - a;
+	}
+	return a;
+}
+/* Ferentiu Emma-Luciana
+14.Scrieţi un program care citeşte n numere întregi de la tastatură şi le afişează pe cele divizibile cu 3. */
+//  definirea directiva preprocesor
+// folosirea fisierelor antent specifice
+// bibliotecile  standard ce au fost folosite in program
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+
+int main()
+{
+	int n, x[100];
+	printf("Dati un numar: ");
+	scanf("%d", &n);
+	for (int i = 0; i < n; i++) //citire n numere
+{
+		scanf("%d", &x[i]);
+	}
+	printf("Sirul are urmatoarele numere divizibile cu 3: ");
+	for (int i = 0; i < n; i++) //verificarea tuturor valorilor si afisarea celor care sunt divizibile cu 3
+ {
+		if (x[i] % 3 == 0) {
+			printf("%d ", x[i]);
+		}
+	}
+	return 0;
+}
+/* Ferentiu Emma-Luciana
+15.Să se scrie un program care citeşte de la tastatură un caracter, pe care îl afişează pe n rânduri, câte n
+caractere pe un rând*/
+//  definirea directiva preprocesor
+// folosirea fisierelor antent specifice
+// bibliotecile  standard ce au fost folosite in program
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#define n 5
+int main()
+{
+	char c;
+	printf("Dati un caracter: ");
+	scanf("%c", &c);
+	for (int i = 0; i < n; i++) //aranjarea corespunzatoare este data de repetitvele for
+ {
+		for (int j = 0; j < n; j++) {
+			printf("%c ", c);
+		}
+		printf("\n");
+	}
+	return 0;
+}
+
+/* Ferentiu Emma-Luciana
+16.Să se scrie o aplicaţie C/C++ în care se introduc de la tastatură numere întregi, până ce utilizatorul
+apasă tasta <Esc>. Să se determine şi să se afişeze media numerelor impare pozitive. */
+//  definirea directiva preprocesor
+// folosirea fisierelor antent specifice
+// bibliotecile  standard ce au fost folosite in program
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <cstring>
+#include <conio.h>
+
+int main()
+{
+	int n,s = 0,i=0;
+	char key;
+	
+	do { 
+		printf("Introduceti un numar: ");
+		scanf("%d", &n);
+		if (n % 2 == 1 && n > 0) {
+			s = s + n;
+			i++;
+		}
+		key = _getch(); //functie care citeste codul ASCII al caracterului introdus de la tastatura
+	} while(key!=27); //verificam daca s-a introdus tasta <ESC>
+	float media = s / i;
+	printf("Media numerelor impare pozitive este: %0.2f", media );
+	return 0;
+}
+
+
+
+
+
+
+

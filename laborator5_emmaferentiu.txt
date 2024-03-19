@@ -1,0 +1,273 @@
+1.
+//Ferentiu Emma-Luciana
+
+
+//  definirea directiva preprocesor
+// folosirea fisierelor antent specifice
+// bibliotecile  standard ce au fost folosite in program
+//#define _CRT_SECURE_NO_WARNINGS
+#include <cstdio>
+#include <cstdlib> //_countof
+#define MAX 10
+void rezistentaserie(float R1, float R2, float& s); //declaratie functie pentru calcul rezistenta serie
+
+void rezistentaparalel(float R1, float R2, float& p);//declaratie functie pentru calcul rezistenta paralel
+int main() {
+	float R1, R2, s, p; //variabile de tip real
+
+	printf("\nScrie R1:");
+	scanf_s("%f", &R1); //citirea rezistentei 1
+	printf("\nScrie R2:");
+	scanf_s("%f", &R2);
+	rezistentaserie(R1, R2, s); //apelarea functiei de calcuk
+	rezistentaparalel(R1, R2, p);
+
+	printf("\nserie is: %6.3f \n", s);//afisarea valorii cu aliniere la stanga si 3 zecimale
+	printf("\nparalel is: %6.3f \n", p);
+
+	return 0;
+}
+void rezistentaserie(float R1, float R2, float& s)//antet functie de calcul, parametrii intregi R1,R2 si transmiterea prin referinta a rasp
+{
+	s = R1 + R2; //formula de calcul
+}
+void rezistentaparalel(float R1, float R2, float& p) //antet functie de calcul, parametrii intregi R1,R2 si transmiterea prin referinta a rasp
+{
+	p = (R1 * R2) / (R1 + R2);
+}
+2.//Ferentiu Emma-Luciana
+
+//  definirea directiva preprocesor
+// folosirea fisierelor antent specifice
+// bibliotecile  standard ce au fost folosite in program
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+float serie(float, float); //declarare functie de calcul
+float paralel(float, float);
+int main() {
+
+	float C1, C2; //declarare variabile reale
+	printf("dati doua valori ale capacitatilor");
+	scanf("%f%f", &C1, &C2); //citirea variabilelor intregi
+	printf("\n capacitatea serie %-0.4f si cea in paralel %-0.4f", serie(C1, C2), paralel(C1, C2)); //afisarea rezultatelor respectand cerinta
+	return 0;
+}
+float serie(float a, float b) //antet functie {
+	return (1/a)+(1/b);
+}
+
+float paralel(float x, float y) {
+	return x+y;
+
+}
+3.
+//Ferentiu Emma-Luciana
+
+
+//  definirea directiva preprocesor
+// folosirea fisierelor antent specifice
+// bibliotecile  standard ce au fost folosite in program
+//#define _CRT_SECURE_NO_WARNINGS
+#include <cstdio>
+#include <math.h>
+#include <cstdlib> //_countof
+#define MAX 10
+void ipotenuza(float c1, float c2, float& i); //declaratie functie calcul ipotenuza
+
+void perimetru(float c1, float c2, float i, float& p); //declaratie functie calcul perimetru
+int main() {
+	float c1, c2, i, p; //variable de tip intreg
+
+	printf("\nScrie c1:");
+	scanf_s("%f", &c1);  //citire valoare intreaga
+	printf("\nScrie c2:");
+	scanf_s("%f", &c2);
+	ipotenuza(c1, c2, i);
+	perimetru(c1, c2, i, p);
+
+	printf("\nipotenuza is: %-6.3f \n", i); //afisare valoare cu exact 3 zecimale si aliniere la stanga
+	printf("\nperimetru is: %-6.3f \n", p);
+
+	return 0;
+}
+void ipotenuza(float c1, float c2, float& i)//antet functie, parametrii intregi, raspunsul fiind transmis prin referinta
+{
+	i = sqrt(c1 * c1 + c2 * c2); //formula de calcul cu ajutorul functiei din biblioteca math
+}
+void perimetru(float c1, float c2, float i, float& p)
+{
+	p = i + c1 + c2;
+}
+
+4. 
+//Ferentiu Emma-Luciana
+
+
+//  definirea directiva preprocesor
+// folosirea fisierelor antent specifice
+// bibliotecile  standard ce au fost folosite in program
+
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <cmath>
+
+int main() {
+
+	int a, b; //declarare coeficienti
+	printf("Introduceti valorile a doua numere: ");
+	scanf("%d%d", &a, &b); //citire coeficienti intregi
+	printf("Solutia ecuatiei ax+b este: %f", float((-1) * b) / a); //afisare rezultat intreg
+	return 0;
+}
+
+5.
+//Ferentiu Emma-Luciana
+
+//  definirea directiva preprocesor
+// folosirea fisierelor antent specifice
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+float r_serie(float, float); //declaare functii
+float r_paralel(float, float);
+float c_serie(float, float);
+float c_paralel(float, float);
+
+int main() {
+
+	float R1, R2, C1, C2; //declarare valori reale pentru rezistenta si capacitate
+	printf("dati doua valori ale rezistentelor ");
+	scanf("%f%f", &R1, &R2); //citire specifica
+	printf("dati doua valori ale capacitatilor ");
+	scanf("%f%f", &C1, &C2);
+
+	printf("\n rezistenta serie %0.3f si cea in paralel %0.3f", r_serie(R1, R2), r_paralel(R1, R2)); //afisare rezistente
+	printf("\n capacitatea serie %0.4f si cea in paralel %0.4f", c_serie(C1, C2), c_paralel(C1, C2)); //afisare capacitati
+	return 0;
+}
+float r_serie(float a, float b) //antet functie
+{
+	return a + b;
+}
+
+float r_paralel(float x, float y) {
+	return (1 / x) + (1 / y);
+}
+
+float c_serie(float a, float b) {
+	return (1 / a) + (1 / b);
+}
+
+float c_paralel(float x, float y) {
+	return x + y;
+}
+6.
+//Ferentiu Emma-Luciana
+
+//  definirea directiva preprocesor
+// folosirea fisierelor antent specifice
+// bibliotecile  standard ce au fost folosite in program
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <cstring>
+
+int main() {
+	char s1[33], s2[33]; //declarare siruri de caractere pentru nume
+	float m1, m2; //declarare numere intregi pentru note
+
+	printf("Numele primului student: ");
+	scanf("%s", &s1); //citire nume
+
+	printf("Numele celui de-al doilea student: ");
+	scanf("%s", &s2);
+
+	printf("Nota la programare a primului student: ");
+	scanf("%f", &m1); //citire nota
+
+	printf("Nota la programare a celui de-al doilea student: ");
+	scanf("%f", &m2);
+
+	printf("\nStudentul cu numele %-s \n", s1); //afisare corespunzatoare cerintei
+	printf("Studentul cu numele %s ", s2);
+	float c = (m1 + m2) / float(2); //calcul medie
+	printf("\nmedia lor este %20.2f", c  ); //afisare medie cu 2 zecimale
+	return 0;
+}
+7.
+//Ferentiu Emma-Luciana
+
+//  definirea directiva preprocesor
+// folosirea fisierelor antent specifice
+// bibliotecile  standard ce au fost folosite in program
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+
+int main() {
+
+	int r; //declarare raza de tip intreg
+	float PI = 3.14; //definire pi
+	printf("Dati raza cercului: "); 
+	scanf("%d", &r); //citire raza
+	printf("Lungimea cercului este %10.3f iar aria este %10.3f", 2 * PI * r, PI * r * r); //afisarea corespunzatoare
+	return 0;
+}
+8.
+//FERENTIU EMMA-LUCIANA
+
+//  definirea directiva preprocesor
+// folosirea fisierelor antent specifice
+// bibliotecile  standard ce au fost folosite in program
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+void timp(int o1, int m1, int& o2, int& m2);
+int main() {
+
+	int o1,o2,m1,m2;
+	printf("introduceti ora si minutul plecarii din Cluj");
+	scanf("%d%d",&o1,&m1);
+	printf("introduceti ora si minutul sosirii la Brasov");
+	scanf("%d%d",&o2,&m2);
+	timp(o1, m1, o2, m2);
+	printf("\n Calatoria dureaza %d", o2 );
+	printf("ore si %d", m2);
+	printf("minute");
+	return 0;
+}
+void timp(int o1, int m1, int &o2, int &m2) 
+{
+	if (o1 > o2)
+		o2 = o2 + 24; //in cazul in care ora sosirii este dupa miezul noptii iar ora plecarii inainte
+	o2 = o2 - o1;
+	if(m1>m2)
+	{
+		m2 = m2 + 60;
+		o2 = o2 - 1; //in cazul in care minutul plecarii/sosirii influenteaza numarul de ore calculat anterior
+	}
+	m2 = m2 - m1;
+
+}
+
+9.
+//FERENTIU EMMA-LUCIANA
+
+//  definirea directiva preprocesor
+// folosirea fisierelor antent specifice
+// bibliotecile  standard ce au fost folosite in program
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+float timp(int, int); //declararea functiei de calcul a timpului
+int main() {
+
+	int M1, M2; //declararea vitezelor
+	printf("introduceti vitezele masinilor exprimata in km/h");
+	scanf("%d%d", &M1, &M2);
+	printf("\n Acestea se intalnesc dupa urmatorul numar de minute %0.6f", timp(M1,M2)*60); //afisare prin transformare ore in minute
+	return 0;
+}
+float timp(int a, int b) //antet functie
+{
+	int v = a + b;
+	float t = 100 / float(v); //calcul minute 
+	return t;
+}
+
+ 

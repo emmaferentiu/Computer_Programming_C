@@ -1,0 +1,269 @@
+/* FERENTIU EMMA-LUCIANA
+1. Să se scrie un program care citeşte n numere reale, pe care le stochează într-un tablou
+alocat dinamic, afişează suma elementelor negative citite, iar la sfârşit eliberează zona
+de memorie alocată.*/
+
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <malloc.h>
+#include <conio.h>
+
+int  main(void) {
+	int n;
+	float* a, s=0;
+	printf("Dati numarul de elemente: ");
+	scanf("%d", &n);
+
+	a = (float*)malloc(n * sizeof(float));
+	printf("Dati elementele tabloului");
+	for (int i = 0; i < n; i++) {
+		scanf("%f", a + i);
+		if (*(a + i) < 0) {
+			s = s + (*(a + i));
+		}
+	}
+	printf("Suma elementelor negative este: %0.2f", s);
+	free(a);
+
+}
+
+
+---------------------------------------------------------------------------------------------------------------------------
+
+
+/* FERENTIU EMMA-LUCIANA
+4. Să se scrie o aplicaţie C/C++ care alocă dinamic memorie pentru "n" şiruri de
+caractere, care se vor citi de la tastatură.*/
+
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <malloc.h>
+#include <conio.h>
+
+int  main(void) {
+	int  n, i;
+	char** a;
+	printf("\n  Introduceti  numarul  de  siruri:  ");
+	scanf("%d", &n);
+
+	if (a = new  char* [n]) {
+		for (i = 0; i < n; i++) {
+			if (a[i] = new  char[20]) {
+				printf("\n  introduceti  sirul  nr.  %d=  ", i + 1);
+				scanf("\n  %s", a[i]);
+			}
+			else
+				printf("\n  Eroare  de  alocare  2");
+		}
+	}
+	else
+		printf("\n  Eroare  de  alocare  1");
+}
+
+
+-----------------------------------------------------------------------------------------------------------------------------
+
+
+/* FERENTIU EMMA-LUCIANA
+5. Declaraţi un pointer global de tip float. În funcţia main() citiţi o valoare întreagă N
+care reprezintă dimensiunea tabloului de numere reale. Alocaţi memoria necesară
+pentru stocarea tabloului şi citiţi elementele de la tastatură. Determinaţi valoarea
+medie a celor N elemente şi calculaţi Mn=(sum(pow((xi-xmed),n))/N, unde n=1,2,3.
+Afişaţi rezultatele şi apoi eliberaţi memoria. Folosiţi funcţiile malloc() şi free().
+Generaţi numerele din tablou folosind funcţia de bibliotecă care generează numere
+aleatoare şi determinaţi pentru acestea media valorilor şi Mn. Realizati aceeasi
+aplicatie folosind operatorii new şi delete.*/
+
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <malloc.h>
+#include <conio.h>
+#include <math.h>
+#include <time.h>
+#include <stdlib.h>
+
+float  medie(float*, int);
+
+int main(void) {
+	int  N, i, n;
+	float  ma, sumas = 0, v1, v2, v3;
+	float* v;
+
+	printf("\n  Introduceti dimensiunea  ");
+	scanf("%d", &N);
+
+	if (N <= 0)
+	{
+		printf("\n  Invalid!  ");
+	}
+
+	v = (float*)malloc(N * sizeof(float));
+	srand((unsigned)time(NULL));
+
+	if (v == NULL)
+	{
+		printf("\n  Alocare nereusita! ");
+		return 1;
+	}
+	else
+	{
+		for (i = 0; i < N; i++)
+		{
+			v[i] = rand();
+		}
+
+		printf("\n  Tabloul este:  ");
+
+		for (i = 0; i < N; i++)
+		{
+			printf("\n  v[%d]=  %0.2f", i, *(v + i));
+		}
+
+		ma = medie(v, N);
+
+		for (i = 0; i < N; i++)
+		{
+			float  q = *(v + i);
+			v1 = pow((q - ma), 1);
+			v2 = pow((q - ma), 2);
+			v3 = pow((q - ma), 3);
+			sumas += v1 + v2 + v3;
+		}
+
+		float  Mn = (float)sumas / N;
+		printf("\n  Rezultatul e:  %0.2f", Mn);
+	}
+
+	if (v)
+		free(v);
+
+}
+
+float  medie(float* v, int  N1)
+{
+	int  i;
+	float  med;
+	float  sum = 0;
+
+	for (i = 0; i < N1; i++)
+	{
+		sum += v[i];
+	}
+
+	med = (float)sum / N1;
+	return(med);
+}
+
+
+-----------------------------------------------------------------------------------------------------------------------------
+
+
+/* FERENTIU EMMA-LUCIANA
+8. Să se scrie o aplicaţie C/C++ în care se alocă dinamic memorie pentru n numere
+întregi, numere ce vor fi citite de la tastatură. Să se scrie funcţia care extrage radicalul
+din fiecare număr şi stochează valorile obţinute într-un alt tablou alocat dinamic. Să
+se afişeze numerele iniţiale şi valorile din tabloul format. Eliberaţi la sfârşit memoria
+alocată.*/
+
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <malloc.h>
+#include <conio.h>
+#include <math.h>
+#include <time.h>
+#include <stdlib.h>
+
+void  radical(int*, float*, int);
+
+int main(void)
+{
+	int* a = NULL, n;
+	float* b = NULL;
+
+	do
+	{
+		printf("\n  Lungimea  tabloului:  ");
+		scanf("%d", &n);
+	} while (n <= 0);
+
+	if (a = new  int[n])
+	{
+		printf("Elementle  tabloului:  \n");
+
+		for (int i = 0; i < n; i++)
+		{
+			printf("  a[%d]:  ", i + 1);
+			scanf("%d", a + i);
+		}
+		if (b = new  float[n])
+			radical(a, b, n);
+
+		printf("\n  Tabloul  initial:  \n");
+
+		for (int i = 0; i < n; i++)
+			printf("%d  ", *(a + i));
+
+		printf("\n\n  Tabloul  modificat:  \n");
+
+		for (int i = 0; i < n; i++)
+			printf("%0.2f  ", *(b + i));
+	}
+	else
+		printf("\n  Eroare  de  alocare!!");
+
+	if (a)
+		free(a);
+	if (b)
+		free(b);
+}
+
+
+void  radical(int* a, float* b, int  n)
+{
+	for (int i = 0; i < n; i++)
+		*(b + i) = (sqrt((float) * (a + i)));
+}
+
+
+-----------------------------------------------------------------------------------------------------------------------------
+
+
+/* FERENTIU EMMA-LUCIANA
+9. Scrieţi un program în care se citesc n şiruri de caractere şi se concatenează într-un alt
+şir, alocat dinamic. Repetaţi operaţia de câte ori doreşte utilizatorul. După fiecare
+afişare a şirului obţinut prin concatenare eliberaţi memoria alocată dinamic.*/
+
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <malloc.h>
+#include <conio.h>
+#include <math.h>
+#include <time.h>
+#include <stdlib.h>
+#include <iostream>
+
+int main(void)
+{
+	int  i = 50, key,n;
+	char* p;
+	
+	do
+	{
+		char  s[50], ch[30];
+		p = s;
+		p = (char*)malloc(i * sizeof(char));
+		printf("Dati numarul sirurilor de caractere");
+		scanf("%d", &n);
+		for (int i = 0; i < n; i++) {
+			printf("\n  Adauga  un  sir  de  caractere:  ");
+			scanf("%s", ch);
+			strcat(p, ch);
+		}
+		printf("\n  Sirul  concatenat  este:  %s", p);
+		free(p);
+		printf("\n  Apasa  <ESC>  pentru  iesire.  \n");
+
+		key = _getch();
+
+	} while (!(key == 27));
+}
